@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE user (
+	userId INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	username CHAR(60) NOT NULL,
+	password CHAR(128) NOT NULL,
+  gateway CHAR(60),
+	PRIMARY KEY(userId)
+
+);
