@@ -23,9 +23,7 @@ $arr[] = <<<HTML
      </select>
 HTML;
 
-if(isset($_SESSION['output'])){
-    $arr = $_SESSION['output'];
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,8 +33,9 @@ if(isset($_SESSION['output'])){
         body{
             background-color: lightblue;
         }
-        #clientTable{
+        #clientTable, #companyTable{
             border-collapse: collapse;
+            margin-bottom: 3em;
         }
         #clientTable, td, th{
             border: 1px solid black;
@@ -52,11 +51,11 @@ if(isset($_SESSION['output'])){
             $("#clientSelect").change(function() {
                 var selectVal = $("#clientSelect").val();
                 $.ajax({
-                    url: "processapi.php",
+                    url: "processClient.php",
                     data: {clientIndex:selectVal},
                     type: "POST",
                     success: function(data){
-                        $('div').html(data);
+                        $('#divA').html(data);
                         console.log(data);
                     }
 
@@ -66,11 +65,11 @@ if(isset($_SESSION['output'])){
             $("#companySelect").change(function() {
                 var selectVal = $("#companySelect").val();
                 $.ajax({
-                    url: "processapi.php",
+                    url: "processCompany.php",
                     data: {companyIndex:selectVal},
                     type: "POST",
                     success: function(data){
-                        $('div').html(data);
+                        $('#divB').html(data);
                         console.log(data);
                     }
 
@@ -88,7 +87,8 @@ if(isset($_SESSION['output'])){
         }
     ?>
 </form>
-<div></div>
+<div id="divA"></div>
+<div id="divB"></div>
 
 </body>
 </html>

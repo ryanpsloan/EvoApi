@@ -3,7 +3,7 @@ session_start();
 session_unset();
 include_once("evoapi.php");
 include_once("connect.php");
-
+$clients = NULL; $companies = NULL;
 if(isset($_POST['clientIndex'])) {
     $api = new EvoApi();
     $jsonData = $api->GET("/clients");
@@ -25,7 +25,7 @@ if(isset($_POST['clientIndex'])) {
     $jsonData = $api->GET("/clients/$clientId/companies");
     $companies = json_decode($jsonData);
     echo <<<HTML
-     <select id="companySelect" name="companiesSelect">
+     <select id="companySelect" name="companySelect">
      <option value="empty">Select a Company</option>
 HTML;
     for($i = 0; $i < count($companies); $i++){
@@ -38,9 +38,9 @@ HTML;
     echo <<<HTML
      </select>
 HTML;
-}
-if(isset($_POST['companyIndex'])) {
 
 }
+
+
 ?>
 
