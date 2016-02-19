@@ -6,7 +6,7 @@ class EvoApi{
     private $sessionId;
 
     public function __construct(){
-        $this->restURL = "https://apitest.evolutionpayroll.com";
+        $this->restURL = "https://apitest.test.com";
         $url = $this->restURL."/identity/v1/token/bureau/paydaytest";
 
         $response = $this->loginHttpCall($url, true);
@@ -73,7 +73,7 @@ class EvoApi{
 
         if($post){
             curl_setopt($curl, CURLOPT_POST, true);
-            $body = "grant_type=password&username=gateway&password=bluehinge1#";
+            $body = "grant_type=password&username=123&password=456";
             curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
         }
 
